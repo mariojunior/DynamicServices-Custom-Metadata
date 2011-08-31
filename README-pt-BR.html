@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1038.36">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica; min-height: 19.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #b0110b}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #007748; min-height: 17.0px}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #007748}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #1c39f6}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #980d08}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #1c39f6; min-height: 17.0px}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #4f77c5}
+    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco}
+    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #00a530}
+    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; color: #1256f6}
+    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Monaco; min-height: 17.0px}
+    li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica}
+    span.s1 {font: 12.0px Verdana}
+    span.s2 {color: #1c39f6}
+    span.s3 {color: #000000}
+    span.s4 {color: #b0110b}
+    span.s5 {color: #1256f6}
+    span.s6 {color: #b133ce}
+    span.s7 {color: #2ca77d}
+    span.s8 {color: #75abd2}
+    span.s9 {font: 16.0px Helvetica}
+    span.s10 {font: 13.0px Monaco; color: #1c39f6}
+    span.s11 {font: 13.0px Monaco}
+    span.s12 {font: 13.0px Monaco; color: #b0110b}
+    span.s13 {font: 14.0px Monaco}
+    span.Apple-tab-span {white-space:pre}
+    ul.ul1 {list-style-type: disc}
+    ul.ul2 {list-style-type: hyphen}
+  </style>
+</head>
+<body>
+<p class="p1"><b>Instruções sobre a [DynamicService] Metadata</b></p>
+<p class="p1">A idéia, originalmente, é de Marty Piller (@<span class="s1">marty_pitt</span>), descrita em seu blog:</p>
+<p class="p1"><a href="http://martypitt.wordpress.com/2011/07/18/a-new-parsley-extension-the-tag/">http://martypitt.wordpress.com/2011/07/18/a-new-parsley-extension-the-tag/</a></p>
+<p class="p2"><br></p>
+<p class="p1">É extremamente recomendada a leitura do post para compreender o propósito dessa solução.</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><b>Instruções sobre o uso:</b></p>
+<p class="p1"><b>1) A Configuração no Swiz:</b></p>
+<p class="p1">Primeiramente, declara-se um objeto do tipo DynamicServiceSetup que irá guardar o endereço de nossos endPoints.</p>
+<p class="p1">Após isso, declarar a DynamicServiceMetadataProcessor dentro de &lt;customProcessors&gt;, ligando o atributo "setup" ao objeto de Setup criado e declarado anteriormente por databinding.</p>
+<p class="p2"><br></p>
+<p class="p1">Segue exemplo abaixo:</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2">&lt;swiz:Swiz</span><span class="s3"> xmlns:swiz="</span>http://swiz.swizframework.org<span class="s3">" … &gt;</span></p>
+<p class="p4"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span>&lt;fx:Declarations&gt;</p>
+<p class="p6"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>&lt;setup:DynamicServiceSetup<span class="s3"> id="</span><span class="s4">_setup</span><span class="s3">"</span></p>
+<p class="p3"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>endPoint="</span>http://localhost:8080/SampleDynamicWebProject/messagebroker/amf<span class="s3">"</span></p>
+<p class="p3"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>wsdlEndPoint="</span>http://localhost:8080/SampleWebServiceProject/endpoint?wsdl<span class="s3">"</span><span class="s2">/&gt;</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span>&lt;/fx:Declarations&gt;</p>
+<p class="p2"><br></p>
+<p class="p6"><span class="Apple-tab-span">	</span>&lt;swiz:customProcessors&gt;</p>
+<p class="p7"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>&lt;!-- Here, our custom metadata processor --&gt;</p>
+<p class="p6"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>&lt;processor:DynamicServiceMetadataProcessor<span class="s3"> setup="</span><span class="s4">{</span><span class="s3">_setup</span><span class="s4">}</span><span class="s3">" </span>/&gt;</p>
+<p class="p6"><span class="Apple-tab-span">	</span>&lt;/swiz:customProcessors&gt;</p>
+<p class="p8"><br></p>
+<p class="p6">&lt;/swiz:Swiz&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><b>2) A Definição de Contrato dos Serviços:</b></p>
+<p class="p1">Primeiramente, como descrito na ideia original de Marty, é preciso criar uma Inteface (OO, nao é uma 'View') que servirá como contrato para os métodos de serviços:</p>
+<p class="p9">/**</p>
+<p class="p9"><span class="Apple-converted-space"> </span>* This interface defines a back-end service contract.</p>
+<p class="p9"><span class="Apple-converted-space"> </span>*/<span class="Apple-converted-space"> </span></p>
+<p class="p10"><span class="s5">public</span> <span class="s6">interface</span> IPessoaService</p>
+<p class="p10">{</p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="s7">function</span> getPerson(id:int):AsyncToken;</p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="s7">function</span> listPersons():AsyncToken;</p>
+<p class="p11"><span class="s3"><span class="Apple-tab-span">	</span></span><span class="s7">function</span><span class="s3"> savePerson(p:Object):AsyncToken; </span>//p would be a Person Value Object concrete class, no problem for that :)</p>
+<p class="p11"><span class="s3"><span class="Apple-tab-span">	</span></span>//...and all other methods about PersonService context.</p>
+<p class="p11"><span class="s3"><span class="Apple-tab-span">	</span></span>//Generally, this interface could be a 'copy' of your services back-end classes<span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span></p>
+<p class="p10">}</p>
+<p class="p2"><br></p>
+<p class="p1"><b>3) O uso da Metadata</b></p>
+<p class="p1">Com o contrato definido, basta declarar em seus controllers os atributos que usarão esse contrato anotados com a metadata [DynamicService]:</p>
+<p class="p2"><br></p>
+<p class="p9">/**</p>
+<p class="p9"><span class="Apple-converted-space"> </span>* This class is a simple controller</p>
+<p class="p9"><span class="Apple-converted-space"> </span>*/<span class="Apple-converted-space"> </span></p>
+<p class="p10"><span class="s5">public</span> <span class="s6">class</span> ExampleController</p>
+<p class="p10">{</p>
+<p class="p12"><span class="s3"><span class="Apple-tab-span">	</span>[</span>Inject<span class="s3">]</span></p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="s5">public</span> <span class="s8">var</span> serviceHelper : ServiceHelper;</p>
+<p class="p13"><br></p>
+<p class="p10"><span class="s9"><span class="Apple-tab-span">	</span></span>[<span class="s5">DynamicService</span>(destination=<span class="s4">"PessoaService"</span>)]</p>
+<p class="p10"><span class="s5"><span class="Apple-tab-span">	</span>public</span> <span class="s8">var</span> service : IPessoaService;</p>
+<p class="p13"><br></p>
+<p class="p3"><span class="s3"><span class="Apple-tab-span">	</span>[</span><span class="s5">EventHandler</span><span class="s3">(event=</span>"PessoaEvent.GET_PERSON"<span class="s3">, properties=</span>"id"<span class="s3">)]</span></p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="s5">public</span> <span class="s7">function</span> invokeGetPerson(id:int):<span class="s5">void</span></p>
+<p class="p10"><span class="Apple-tab-span">	</span>{</p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>serviceHelper.executeServiceCall(service.getPerson(id), getPersonResultHandler, defaultFaultHandler);</p>
+<p class="p10"><span class="Apple-tab-span">	</span>}</p>
+<p class="p13"><br></p>
+<p class="p11"><span class="s3"><span class="Apple-tab-span">	</span></span>//... getPersonResultHandler and defaultFaultHandler omitted for convenience</p>
+<p class="p10">}</p>
+<p class="p2"><br></p>
+<p class="p1">Nesse casso, o atributo <i>_service</i> será uma classe concreta (criada, definida, anexada ao swf e inicializada em runtime) que implementa a interface <i>IPessoaService</i> e, ao acessar o método <i>getPerson(id),</i> um <i>&lt;s:RemoteObject/&gt;</i> será criado em runtime invocando exatamente o mesmo método (<i>getPerson(id)</i>) do destination <i>PessoaService</i> de seu back-end, devolvendo um <i>AsyncToken</i> válido para tratar os resultados.</p>
+<p class="p2"><br></p>
+<p class="p1">Com isso, você não precisa mais definir explicitamente seus &lt;s:RemoteObjects/&gt; em seus BeanProvider.<span class="Apple-converted-space"> </span></p>
+<p class="p1">Trocamos o:</p>
+<p class="p6">&lt;s:RemoteObject<span class="s3"> id="</span><span class="s4">pessoaService</span><span class="s3">"</span></p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span> <span class="Apple-converted-space">  </span>destination="<span class="s4">PessoaService</span>"</p>
+<p class="p3"><span class="s3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span> <span class="Apple-converted-space">  </span>endpoint="</span>http://server:port/context/messagebroker/amf<span class="s3">" </span><span class="s2">/&gt;</span></p>
+<p class="p1">Por isso:</p>
+<p class="p10">[<span class="s5">DynamicService</span>(destination=<span class="s4">"PessoaService"</span>)]</p>
+<p class="p10"><span class="s5">public</span> <span class="s8">var</span> service : IPessoaService;</p>
+<p class="p13"><br></p>
+<p class="p1">Ou, se quiser, você também pode usar a [DynamicService] metadata em setter functions:</p>
+<p class="p10">[<span class="s5">DynamicService</span>(destination=<span class="s4">"PessoaService"</span>)]</p>
+<p class="p10"><span class="s5">public</span> <span class="s7">function</span> <span class="s5">set</span> service(value:IPessoaService):<span class="s5">void</span></p>
+<p class="p10">{</p>
+<p class="p11"><span class="s3"><span class="Apple-tab-span">	</span>_service = value; </span>//onde _service é um atributo privado do tipo IPessoaService</p>
+<p class="p10">}</p>
+<p class="p2"><br></p>
+<p class="p1">Lembrando que a configuração de <i>endpoint</i> é a mesma para todos os serviços, e ela já fora definida pela <span class="s10">&lt;setup:DynamicServiceSetup</span><span class="s11"> id="</span><span class="s12">_setup</span><span class="s11">" .../&gt;</span><span class="s13"> </span>na configuração do <i>Swiz</i>, logo no início da aplicação.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>4) [DynamicService] Metadata Arguments:</b></p>
+<p class="p10"><span class="s9">A metadata possui a seguinte assinatura: </span>[<span class="s5">DynamicService</span>(destination:String, type:String="<span class="s4">remoteObject</span>")] <span class="s9">onde:</span></p>
+<ul class="ul1">
+  <li class="li1">type (String): Por padrão, <i>type </i>é sempre um "<span class="s12">remoteObject</span>" caso seja omitido. Demais valores válidos são:</li>
+  <ul class="ul2">
+    <li class="li1"><span class="s12">httpRequest </span>: Significa que um &lt;s:HttpService /&gt; será gerado em runtime.</li>
+    <li class="li1"><span class="s12">webService </span>: Significa que um &lt;s:WebService/&gt; será gerado em runtime.</li>
+    <li class="li1"><span class="s12">mock </span>: Significa quem um bean 'mock' será injetado na variável.</li>
+    <li class="li1">(Padrão) <span class="s12">remoteObject</span>: Significa que um &lt;s:RemoteObject/&gt; será gerado em runtime.</li>
+  </ul>
+</ul>
+<p class="p2"><br></p>
+<ul class="ul1">
+  <li class="li1">destination (String) : Obrigatória Aponta o "destino" de origem. Esse argumento depende do valor do argumento "type" (Lembre-se que se "type" nao for especificado, o valor default é "remoteObject"):</li>
+  <ul class="ul2">
+    <li class="li1">Se "type" for <span class="s12">remoteObject</span> você precisa especificar a classe remota de Serviço do Back-end.</li>
+    <li class="li1">Se "type" for <span class="s12">httpRequest</span> você precisa especificar a URL para post/get de dados.</li>
+    <li class="li1">Se "type" for <span class="s12">webService</span> você precisa especificar a operação (operation)<span class="Apple-converted-space">  </span>do WebService que será consumido.</li>
+    <li class="li1">Se "type" for <span class="s12">mock </span>você precisa especificar o <i>id</i> de um objeto mock declarado em seu BeanProvider.</li>
+  </ul>
+</ul>
+<p class="p2"><br></p>
+<p class="p1"><b>5) Boas práticas e recomendações</b></p>
+<ul class="ul1">
+  <li class="li1"><b>Um contrato (Interface) para cada Serviço: </b>A princípio, é possível criar uma única Interface como contrato onde você definiria todos os métodos de todas as classes de seus serviços back-end, mas não recomendo adotarem essa prática. Esse tipo de generalização mais atrapalha do que ajuda.</li>
+</ul>
+<p class="p2"><br></p>
+<ul class="ul1">
+  <li class="li1"><b>Nao misture os Serviços: </b>Crie contratos (interfaces) isolados para as operações de "RemoteObject", "HttpService", "WebServices". Teoricamente é possível reaproveitar o mesmo contrato, mas ainda não implementei isso (falta de tempo).</li>
+</ul>
+<p class="p2"><br></p>
+<p class="p1"><b>6) Dependências</b></p>
+<p class="p1">Para a [DynamicService] Metadata funcionar adequadamente, é preciso adicionar as seguintes libraries ao seu projeto:</p>
+<ul class="ul1">
+  <li class="li1">Swiz Framework versão 1.1 ou superior (www.swizframework.com)</li>
+  <li class="li1">AS3Commons: <a href="http://www.as3commons.org/">http://www.as3commons.org/</a></li>
+  <ul class="ul2">
+    <li class="li1">as3-commons-bytecode-1.0-RC3.swc (ou superior);</li>
+    <li class="li1">as3-commons-collections-1.3.0.swc (ou superior);</li>
+    <li class="li1">as3-commons-lang-0.3.4.swc (ou superior);</li>
+    <li class="li1">as3-commons-logging-2.0.swc (ou superior);</li>
+    <li class="li1">as3-commons-reflect-1.3.4.swc (ou superior);</li>
+  </ul>
+</ul>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><b>7) Author</b></p>
+<p class="p1">Mario Junior</p>
+<p class="p1">contact@mariojunior.com</p>
+<p class="p1">mario.junior@dclick.com.br</p>
+<p class="p1">http://blog.mariojunior.com</p>
+<p class="p1">@mariojunior</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+</body>
+</html>
