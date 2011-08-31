@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.mariojunior.swiz.plugin.processor.DynamicServiceMetadataProcessor"/>
+    <classEntry path="com.mariojunior.swiz.plugin.setup.DynamicServiceSetup"/>
+    <classEntry path="com.mariojunior.swiz.plugin.metadata.DynamicServiceMetadataTag"/>
+    <classEntry path="com.mariojunior.swiz.plugin.factory.RemoteObjectFactory"/>
+    <classEntry path="com.mariojunior.swiz.plugin.factory.WebServiceFactory"/>
+    <classEntry path="com.mariojunior.swiz.plugin.factory.HttpServiceFactory"/>
+    <classEntry path="com.mariojunior.swiz.plugin.interceptor.ServiceMethodInterceptor"/>
+    <classEntry path="com.mariojunior.swiz.plugin.setup.ServiceMap"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

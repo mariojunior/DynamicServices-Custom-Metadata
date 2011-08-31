@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:swiz="http://swiz.swizframework.org" 
+			   xmlns:config="com.mariojunior.example.config.*"
+			   applicationComplete="{trace('##### Application creation completed!')}">
+
+	<fx:Script>
+		<![CDATA[
+			import com.mariojunior.example.views.MyWindowView;
+			
+			import mx.managers.PopUpManager;
+			
+			protected function buttonClickHandler(event:MouseEvent):void
+			{
+				var popup : MyWindowView = PopUpManager.createPopUp(this,MyWindowView,true) as MyWindowView;
+				PopUpManager.centerPopUp(popup);
+			}
+			
+		]]>
+	</fx:Script>
+
+	
+	<fx:Declarations>
+		
+		<config:MySwizConfig />
+		
+	</fx:Declarations>
+	
+	<s:Button x="41" y="89" label="Open PopUp"
+			  click="buttonClickHandler(event)"/>
+	
+	
+	
+</s:Application>

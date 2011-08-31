@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:BeanProvider 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:swiz="http://swiz.swizframework.org" 
+	xmlns:controllers="com.mariojunior.example.controllers.*" 
+	xmlns:impl="com.mariojunior.example.delegates.impl.*" xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<!-- place your beans here! -->
+	<controllers:ExampleController id="exampleController" />
+	<controllers:AnotherExampleController id="anotherExampleController" />
+	
+	
+	<!--mock object for unit tests-->
+	<impl:PessoaServiceMock id="pessoaServiceMock" />
+	
+	
+	<s:RemoteObject id="pessoaService"
+					destination="PessoaService"
+					endpoint="http://server:port/context/messagebroker/amf" />
+	
+</swiz:BeanProvider>

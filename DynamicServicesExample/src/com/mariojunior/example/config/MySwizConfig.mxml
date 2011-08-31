@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:Swiz xmlns:swiz="http://swiz.swizframework.org"
+		   xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		   xmlns:setup="com.mariojunior.swiz.plugin.setup.*" 
+		   xmlns:processor="com.mariojunior.swiz.plugin.processor.*" 
+		   beanProviders="{[MainBeans]}" >
+	
+	<fx:Declarations>
+		<setup:DynamicServiceSetup id="_setup"
+								   endPoint="http://localhost:8080/SampleDynamicWebProject/messagebroker/amf"
+								   wsdlEndPoint="http://localhost:8080/SampleWebServiceProject/endpoint?wsdl"/>
+	</fx:Declarations>
+	
+	<swiz:config>			
+		<swiz:SwizConfig eventPackages="com.mariojunior.example.events.*"
+						 viewPackages="com.mariojunior.example.views.*"/>
+	</swiz:config>
+	
+	<swiz:customProcessors>
+		<!-- Here, our custom metadata processor -->
+		<processor:DynamicServiceMetadataProcessor setup="{_setup}" />
+	</swiz:customProcessors>
+	
+</swiz:Swiz>

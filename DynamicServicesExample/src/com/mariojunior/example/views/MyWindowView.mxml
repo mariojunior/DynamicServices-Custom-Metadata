@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   width="632" height="300" 
+			   title="My Window View Sample"
+			   close="{PopUpManager.removePopUp(this)}">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.mariojunior.example.events.InvokeServerEvent;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			import mx.managers.PopUpManager;
+			
+			[Bindable]
+			public var myDataProvider : IList;
+			
+			
+			/**
+			 * I don't like to use bubbled events... I prefer use the swiz dispatcher.
+			 * Just a note: Other preference is to use PresentationModel for that,
+			 * don't dispatches events from view directly, but this is a just example
+			 *
+			 */
+			[Dispatcher]
+			public var swizDispatcher : IEventDispatcher;
+			
+			
+			[EventHandler(event="InvokeServerEvent.NOTIFY_VIEW", properties="dataToView")]
+			public function receiveDataFromController(data:Object):void
+			{
+				myDataProvider = ArrayCollection(data);
+			}
+			
+			
+			protected function btnRemoteObjectClickHandler(event:MouseEvent):void
+			{
+				dispatchSwizEvent(InvokeServerEvent.INVOKE_REMOTE_OBJECT,"personNameOrObject");
+			}
+
+
+			protected function btnWebServiceClickHandler(event:MouseEvent):void
+			{
+				dispatchSwizEvent(InvokeServerEvent.INVOKE_WEB_SERVICE,"blabalbla");
+			}
+
+
+			protected function btnHttpServiceClickHandler(event:MouseEvent):void
+			{
+				dispatchSwizEvent(InvokeServerEvent.INVOKE_HTTP_SERVICE);
+			}
+
+
+			protected function btnMockObjectClickHandler(event:MouseEvent):void
+			{
+				dispatchSwizEvent(InvokeServerEvent.INVOKE_MOCK_OBJECT,"HAHAHAH");
+			}
+			
+			
+			private function dispatchSwizEvent(type:String, dataToSend:Object=null):void
+			{
+				var evt : InvokeServerEvent = new InvokeServerEvent(type,dataToSend);
+				swizDispatcher.dispatchEvent(evt);
+			}
+			
+			
+			
+			
+			
+
+		]]>
+	</fx:Script>
+	
+	<s:Button id="btnRemoteObject" x="10" y="10" label="RemoteObject" 
+			  click="btnRemoteObjectClickHandler(event)"/>
+	
+	<s:Button id="btnWebService" x="115" y="10" label="WebService" width="97"
+			  click="btnWebServiceClickHandler(event)"/>
+	
+	<s:Button id="btnHttpService" x="220" y="10" label="HttpService" width="97"
+			  click="btnHttpServiceClickHandler(event)"/>
+	
+	<s:Button id="btnMockObject" x="325" y="10" label="Mock Object" width="97"
+			  click="btnMockObjectClickHandler(event)"/>
+	
+	
+	
+	<mx:DataGrid x="10" y="55" width="610" height="202" dataProvider="{myDataProvider}" />
+	
+	
+	
+</s:TitleWindow>
